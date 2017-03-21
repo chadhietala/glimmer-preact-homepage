@@ -1,3 +1,120 @@
-<div>
-  <h1>Welcome to Glimmer!</h1>
+<div id="app-container">
+  <div class="alert-container">
+    <div class="alert hidden" id="alert" role="alert">
+      <div class="wrapper">
+        <p class="content" id="alert-message"></p>
+        <div aria-hidden="true" class="indicator-icon"></div>
+        <p></p><button class="content" id="alert-dismiss-btn"><span class="a11y-text">Dismiss</span>
+        <div aria-hidden="true">
+          <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
+          <g class="small-icon" style="fill-opacity: 1">
+            <path d="M13,4.32L9.31,8,13,11.69,11.69,13,8,9.31,4.31,13,3,11.69,6.69,8,3,4.31,4.31,3,8,6.69,11.68,3Z"></path>
+          </g></svg>
+        </div></button>
+      </div>
+    </div>
+  </div>
+  <div id="verify-email-banner"></div>
+  <div class="push-notification-prompt hidden" id="push-notification-prompt">
+    <div class="permission-ask-container hidden">
+      <div class="entity-lockup">
+        <figure>
+          <div aria-hidden="true" class="linkedin-icon">
+            <svg class="social-icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
+            <g class="color-icon">
+              <rect height="18" style="fill:#FFFFFF;" width="18" x="2.997" y="3"></rect>
+              <g>
+                <rect height="24" style="fill:none;" width="24" x="-0.003"></rect>
+                <path d="M20,2h-16c-1.1,0-2,0.9-2,2v16c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V4C22,2.9,21.1,2,20,2zM8,19h-3v-9h3V19zM6.5,8.8C5.5,8.8,4.7,8,4.7,7s0.8-1.8,1.8-1.8S8.3,6,8.3,7S7.5,8.8,6.5,8.8zM19,19h-3v-4c0-1.4-0.6-2-1.5-2c-1.1,0-1.5,0.8-1.5,2.2V19h-3v-9h2.9v1.1c0.5-0.7,1.4-1.3,2.6-1.3c2.3,0,3.5,1.1,3.5,3.7V19z" style="fill:#0077B5;"></path>
+              </g>
+            </g></svg>
+          </div>
+        </figure>
+        <dl>
+          <dd>Would you like to receive notifications from your LinkedIn network?</dd>
+        </dl>
+      </div>
+      <div class="btn-container">
+        <button class="push-action small-tertiary-button" data-control-name="mwlite_push_notification_later" data-push-action-type="later" id="later">Later</button><button class="push-action small-primary-button" data-control-name="mwlite_push_notification_yes" data-push-action-type="enable" id="enable">OK</button>
+      </div>
+    </div>
+    <div class="success-container hidden">
+      <p class="medium">Great! Now you will be notified whenever there is an update in your network.</p><button class="push-action close-btn" data-push-action-type="close">Close</button>
+    </div>
+    <div class="deny-container hidden">
+      <p class="medium">You can enable alerts from the browser anytime by clicking the lock icon in the address bar.</p><button class="push-action close-btn" data-push-action-type="close">Close</button>
+    </div>
+  </div>
+  <form action="/mwlite/share" class="share-form">
+    <button><img alt="Profile picture" class="person-entity-small" height="40" src="https://media.licdn.com/mpr/mpr/shrink_100_100/p/8/005/052/39b/0c5d996.jpg" width="40"><span class="share-placeholder-text">What would you like to share?</span></button>
+  </form>
+  <section class="feeds">
+    <h1 class="title">Feeds</h1>
+    <ol id="feed-container">
+      {{#each items key="identity" as |item|}}
+      <li class="feed-item new-feed" data-author-urn="urn:li:member:2913299" data-feed-item-tracking-id="R/SliHG2syN1fWAAj5WbMQ==" data-id="activity:6248729529993568256">
+        <section class="feed-card">
+          <div class="activity-feed-item">
+            <a class="feed-actor" data-feed-action-category="view" data-feed-action-type="viewMember" data-feed-control="update_topbar_actor" href="/in/olivertse">
+            <div class="flex-entity-lockup">
+              <figure class="entity-meta" data-feed-action-category="view" data-feed-action-type="viewMember" data-feed-control="actor_picture">
+                <img class="person-entity-small" src="{{item.image}}">
+              </figure>
+              <dl class="entity-content overflow-hidden">
+                <dt class="medium-dark-semibold" data-feed-action-category="view" data-feed-action-type="viewMember" data-feed-control="actor">{{item.name}}</dt>
+                <dd class="single-line small">{{item.title}}</dd>
+                <dd><time class="small">{{item.days}}d</time></dd>
+              </dl>
+            </div></a>
+            <p class="feed-post medium" data-feed-item-tracking-id="R/SliHG2syN1fWAAj5WbMQ==" data-id="activity:6248729529993568256" tabindex="0">{{item.message}}</p>
+            {{#if item.shareImage}}
+            <article class="feed-article image-only">
+              <a data-feed-action-category="view" data-feed-action-type="viewArticle" data-feed-control="object" href="http://image-store.slidesharecdn.com/baad781e-74d7-4243-9f44-8f400ecf1d3b-original.png">
+              <div class="image-wrapper" data-feed-action-category="view" data-feed-action-type="viewImage" data-feed-control="object"><img alt="Feed article image" class="article-image-large" src="https://media.licdn.com/media-proxy/ext?w=506&amp;h=180&amp;hash=KOpPe07WuMwHDn17i5AUjNav9Cs%3D&amp;ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta9Er0Vinkhwfjw8177yE41y87UNCVordEGXyD3u0qYrdfyW4KJPYcbP0uVoSLCsclAY2fPKhFjTlD5vqL4rvKI8nisPmdo27dA4BYBI3iSdf4tY"></div></a>
+            </article>
+            {{/if}}
+          </div>
+          <div class="social-actions-panel">
+            <button aria-label="Like {{item.name}} post" class="control-action feed-action like-btn medium-light" data-feed-action="like" data-feed-action-category="like" data-feed-action-type="likeUpdate" data-feed-control="like_toggle" data-is-liked="">
+            <div aria-hidden="true" class="icon like-icon">
+              <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
+              <g class="small-icon" style="fill-opacity: 1">
+                <path d="M11.6,7L9.7,3.8C9.4,3.3,9.2,2.7,9,2.1L8.8,1c0,0,0,0,0,0H7C5.9,1,5,1.9,5,3v0.4C5,4,5.1,4.7,5.3,5.3L5.5,6c0,0,0,0,0,0l-3,0C1.7,6,1,6.7,1,7.5c0,0.4,0.1,0.7,0.4,1c0,0,0,0,0,0C1.1,8.8,1,9.1,1,9.5c0,0.5,0.3,1,0.7,1.3c0,0,0,0,0,0c-0.1,0.2-0.2,0.5-0.2,0.7c0,0.8,0.6,1.4,1.3,1.5c0,0,0,0,0,0c-0.1,0.3-0.1,0.6,0,1c0.2,0.6,0.9,1,1.5,1H7c0.9,0,1.5-0.1,2.1-0.3l2.1-0.7c0,0,0,0,0,0H14c0,0,0,0,0,0V7c0,0,0,0,0,0L11.6,7C11.6,7,11.6,7,11.6,7z M3.4,10.1L3,9.6C2.9,9.4,2.8,9.2,2.9,8.9L3,8c0,0,0,0,0,0l5.1,0c0,0,0,0,0,0L7,4.7C6.9,4.3,6.9,3.8,6.9,3.4V3.1c0-0.2,0.2-0.4,0.4-0.4c0,0,0.1,0,0.1,0c0.1,0.7,0.4,1.5,0.7,2L10.7,9c0,0,0,0,0,0H12c0,0,0,0,0,0v3c0,0,0,0,0,0h-0.6c0,0,0,0,0,0l-2.5,0.8C8.5,12.9,8.1,13,7.7,13H4.9c-0.2,0-0.4-0.2-0.5-0.4l-0.1-0.5l-0.6-0.5c-0.2-0.2-0.4-0.5-0.3-0.8L3.4,10.1z"></path>
+              </g></svg>
+            </div>
+            <div aria-hidden="true" class="icon unlike-icon">
+              <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
+              <g class="small-icon" style="fill-opacity: 1">
+                <path d="M11.64,7L9.71,3.77A6,6,0,0,1,9,2.13L8.75,1H8A2,2,0,0,0,6,3V3.15A7.81,7.81,0,0,0,6.43,5.3L6.66,6a0,0,0,0,1,0,0H2.5A1.49,1.49,0,0,0,1.38,8.49a0,0,0,0,1,0,0,1.49,1.49,0,0,0,.31,2.25,0,0,0,0,1,0,0A1.48,1.48,0,0,0,2.83,13a0,0,0,0,1,0,0,1.38,1.38,0,0,0,0,1,1.62,1.62,0,0,0,1.51,1H7a6.47,6.47,0,0,0,2.14-.31L11.25,14H14V7H11.64Z"></path>
+              </g></svg>
+            </div><span class="like-count count">1</span></button><a aria-label="Comment on {{item.name}}'s post" class="control-action" data-feed-action-category="expand" data-feed-action-type="expandCommentBox" data-feed-control="comment" href="/mwlite/comments?urn=urn:li:activity:6248729529993568256&amp;threadId=activity:6248729529993568256">
+            <div aria-hidden="true" class="icon medium-light">
+              <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
+              <g class="small-icon" style="fill-opacity: 1">
+                <path d="M14,3H2A1,1,0,0,0,1,4v7a1,1,0,0,0,1,1h9l4,3V4A1,1,0,0,0,14,3ZM3,10V5H13v6.11L11.52,10H3ZM5,7h6V8H5V7Z"></path>
+              </g></svg>
+            </div><span class="count medium-light">0</span></a><a aria-label="Share {{item.name}}'s post" class="control-action medium-light" data-feed-action-category="expand" data-feed-action-type="expandReshareBox" data-feed-control="reshare" href="/mwlite/reshare?urn=urn%3Ali%3Aactivity%3A6248729529993568256&amp;itemUrn=urn%3Ali%3Aactivity%3A6248729529993568256">
+            <div aria-hidden="true" class="icon medium-light">
+              <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
+              <g class="small-icon" style="fill-opacity: 1">
+                <path d="M15.7,7.3L9,1v4H7c-3.9,0-7,3.1-7,7v3h1.4c0-2.2,1.9-4,4.1-4c0,0,0.1,0,0.1,0H9v4l0,0l6.7-6.3C16.1,8.4,16.1,7.7,15.7,7.3C15.7,7.3,15.7,7.3,15.7,7.3z M11,10.6V9H5.6c-1.2,0-2.4,0.4-3.4,1.1C3.1,8.2,4.9,7,7,7h4V5.4L13.7,8L11,10.6z"></path>
+              </g></svg>
+            </div></a>
+          </div><button aria-label="Report {{item.name}} post" class="feed-action semaphore-trigger" data-feed-action="semaphore" data-feed-action-category="expand" data-feed-action-type="expandControl" data-feed-control="control_menu">
+          <div aria-hidden="true" class="ellipsis-icon">
+            <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
+            <g class="small-icon" style="fill-opacity: 1">
+              <path d="M9,2V4H7V2H9ZM7,9H9V7H7V9Zm0,5H9V12H7v2Z"></path>
+            </g></svg>
+          </div></button>
+        </section>
+      </li>
+      {{/each}}
+    </ol>
+    <section class="overlay hidden" data-feed-action-category="dismiss" data-feed-action-type="dismissControl" data-feed-control="feed_container"></section>
+    <div class="hidden" id="semaphore-success-notification">
+      Thanks for letting us know! You'll no longer see this post in your feed
+    </div>
+  </section>
 </div>
+
