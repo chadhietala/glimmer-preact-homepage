@@ -1,120 +1,219 @@
-<div id="app-container">
-  <div class="alert-container">
-    <div class="alert hidden" id="alert" role="alert">
-      <div class="wrapper">
-        <p class="content" id="alert-message"></p>
-        <div aria-hidden="true" class="indicator-icon"></div>
-        <p></p><button class="content" id="alert-dismiss-btn"><span class="a11y-text">Dismiss</span>
-        <div aria-hidden="true">
-          <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
-          <g class="small-icon" style="fill-opacity: 1">
-            <path d="M13,4.32L9.31,8,13,11.69,11.69,13,8,9.31,4.31,13,3,11.69,6.69,8,3,4.31,4.31,3,8,6.69,11.68,3Z"></path>
-          </g></svg>
-        </div></button>
-      </div>
-    </div>
-  </div>
-  <div id="verify-email-banner"></div>
-  <div class="push-notification-prompt hidden" id="push-notification-prompt">
-    <div class="permission-ask-container hidden">
-      <div class="entity-lockup">
-        <figure>
-          <div aria-hidden="true" class="linkedin-icon">
-            <svg class="social-icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
-            <g class="color-icon">
-              <rect height="18" style="fill:#FFFFFF;" width="18" x="2.997" y="3"></rect>
-              <g>
-                <rect height="24" style="fill:none;" width="24" x="-0.003"></rect>
-                <path d="M20,2h-16c-1.1,0-2,0.9-2,2v16c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V4C22,2.9,21.1,2,20,2zM8,19h-3v-9h3V19zM6.5,8.8C5.5,8.8,4.7,8,4.7,7s0.8-1.8,1.8-1.8S8.3,6,8.3,7S7.5,8.8,6.5,8.8zM19,19h-3v-4c0-1.4-0.6-2-1.5-2c-1.1,0-1.5,0.8-1.5,2.2V19h-3v-9h2.9v1.1c0.5-0.7,1.4-1.3,2.6-1.3c2.3,0,3.5,1.1,3.5,3.7V19z" style="fill:#0077B5;"></path>
-              </g>
-            </g></svg>
-          </div>
-        </figure>
-        <dl>
-          <dd>Would you like to receive notifications from your LinkedIn network?</dd>
-        </dl>
-      </div>
-      <div class="btn-container">
-        <button class="push-action small-tertiary-button" data-control-name="mwlite_push_notification_later" data-push-action-type="later" id="later">Later</button><button class="push-action small-primary-button" data-control-name="mwlite_push_notification_yes" data-push-action-type="enable" id="enable">OK</button>
-      </div>
-    </div>
-    <div class="success-container hidden">
-      <p class="medium">Great! Now you will be notified whenever there is an update in your network.</p><button class="push-action close-btn" data-push-action-type="close">Close</button>
-    </div>
-    <div class="deny-container hidden">
-      <p class="medium">You can enable alerts from the browser anytime by clicking the lock icon in the address bar.</p><button class="push-action close-btn" data-push-action-type="close">Close</button>
-    </div>
-  </div>
-  <form action="/mwlite/share" class="share-form">
-    <button><img alt="Profile picture" class="person-entity-small" height="40" src="https://media.licdn.com/mpr/mpr/shrink_100_100/p/8/005/052/39b/0c5d996.jpg" width="40"><span class="share-placeholder-text">What would you like to share?</span></button>
-  </form>
-  <section class="feeds">
-    <h1 class="title">Feeds</h1>
-    <ol id="feed-container">
-      {{#each items key="identity" as |item|}}
-      <li class="feed-item new-feed" data-author-urn="urn:li:member:2913299" data-feed-item-tracking-id="R/SliHG2syN1fWAAj5WbMQ==" data-id="activity:6248729529993568256">
-        <section class="feed-card">
-          <div class="activity-feed-item">
-            <a class="feed-actor" data-feed-action-category="view" data-feed-action-type="viewMember" data-feed-control="update_topbar_actor" href="/in/olivertse">
-            <div class="flex-entity-lockup">
-              <figure class="entity-meta" data-feed-action-category="view" data-feed-action-type="viewMember" data-feed-control="actor_picture">
-                <img class="person-entity-small" src="{{item.image}}">
-              </figure>
-              <dl class="entity-content overflow-hidden">
-                <dt class="medium-dark-semibold" data-feed-action-category="view" data-feed-action-type="viewMember" data-feed-control="actor">{{item.name}}</dt>
-                <dd class="single-line small">{{item.title}}</dd>
-                <dd><time class="small">{{item.days}}d</time></dd>
-              </dl>
-            </div></a>
-            <p class="feed-post medium" data-feed-item-tracking-id="R/SliHG2syN1fWAAj5WbMQ==" data-id="activity:6248729529993568256" tabindex="0">{{item.message}}</p>
-            {{#if item.shareImage}}
-            <article class="feed-article image-only">
-              <a data-feed-action-category="view" data-feed-action-type="viewArticle" data-feed-control="object" href="http://image-store.slidesharecdn.com/baad781e-74d7-4243-9f44-8f400ecf1d3b-original.png">
-              <div class="image-wrapper" data-feed-action-category="view" data-feed-action-type="viewImage" data-feed-control="object"><img alt="Feed article image" class="article-image-large" src="https://media.licdn.com/media-proxy/ext?w=506&amp;h=180&amp;hash=KOpPe07WuMwHDn17i5AUjNav9Cs%3D&amp;ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta9Er0Vinkhwfjw8177yE41y87UNCVordEGXyD3u0qYrdfyW4KJPYcbP0uVoSLCsclAY2fPKhFjTlD5vqL4rvKI8nisPmdo27dA4BYBI3iSdf4tY"></div></a>
-            </article>
-            {{/if}}
-          </div>
-          <div class="social-actions-panel">
-            <button aria-label="Like {{item.name}} post" class="control-action feed-action like-btn medium-light" data-feed-action="like" data-feed-action-category="like" data-feed-action-type="likeUpdate" data-feed-control="like_toggle" data-is-liked="">
-            <div aria-hidden="true" class="icon like-icon">
-              <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
-              <g class="small-icon" style="fill-opacity: 1">
-                <path d="M11.6,7L9.7,3.8C9.4,3.3,9.2,2.7,9,2.1L8.8,1c0,0,0,0,0,0H7C5.9,1,5,1.9,5,3v0.4C5,4,5.1,4.7,5.3,5.3L5.5,6c0,0,0,0,0,0l-3,0C1.7,6,1,6.7,1,7.5c0,0.4,0.1,0.7,0.4,1c0,0,0,0,0,0C1.1,8.8,1,9.1,1,9.5c0,0.5,0.3,1,0.7,1.3c0,0,0,0,0,0c-0.1,0.2-0.2,0.5-0.2,0.7c0,0.8,0.6,1.4,1.3,1.5c0,0,0,0,0,0c-0.1,0.3-0.1,0.6,0,1c0.2,0.6,0.9,1,1.5,1H7c0.9,0,1.5-0.1,2.1-0.3l2.1-0.7c0,0,0,0,0,0H14c0,0,0,0,0,0V7c0,0,0,0,0,0L11.6,7C11.6,7,11.6,7,11.6,7z M3.4,10.1L3,9.6C2.9,9.4,2.8,9.2,2.9,8.9L3,8c0,0,0,0,0,0l5.1,0c0,0,0,0,0,0L7,4.7C6.9,4.3,6.9,3.8,6.9,3.4V3.1c0-0.2,0.2-0.4,0.4-0.4c0,0,0.1,0,0.1,0c0.1,0.7,0.4,1.5,0.7,2L10.7,9c0,0,0,0,0,0H12c0,0,0,0,0,0v3c0,0,0,0,0,0h-0.6c0,0,0,0,0,0l-2.5,0.8C8.5,12.9,8.1,13,7.7,13H4.9c-0.2,0-0.4-0.2-0.5-0.4l-0.1-0.5l-0.6-0.5c-0.2-0.2-0.4-0.5-0.3-0.8L3.4,10.1z"></path>
-              </g></svg>
-            </div>
-            <div aria-hidden="true" class="icon unlike-icon">
-              <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
-              <g class="small-icon" style="fill-opacity: 1">
-                <path d="M11.64,7L9.71,3.77A6,6,0,0,1,9,2.13L8.75,1H8A2,2,0,0,0,6,3V3.15A7.81,7.81,0,0,0,6.43,5.3L6.66,6a0,0,0,0,1,0,0H2.5A1.49,1.49,0,0,0,1.38,8.49a0,0,0,0,1,0,0,1.49,1.49,0,0,0,.31,2.25,0,0,0,0,1,0,0A1.48,1.48,0,0,0,2.83,13a0,0,0,0,1,0,0,1.38,1.38,0,0,0,0,1,1.62,1.62,0,0,0,1.51,1H7a6.47,6.47,0,0,0,2.14-.31L11.25,14H14V7H11.64Z"></path>
-              </g></svg>
-            </div><span class="like-count count">1</span></button><a aria-label="Comment on {{item.name}}'s post" class="control-action" data-feed-action-category="expand" data-feed-action-type="expandCommentBox" data-feed-control="comment" href="/mwlite/comments?urn=urn:li:activity:6248729529993568256&amp;threadId=activity:6248729529993568256">
-            <div aria-hidden="true" class="icon medium-light">
-              <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
-              <g class="small-icon" style="fill-opacity: 1">
-                <path d="M14,3H2A1,1,0,0,0,1,4v7a1,1,0,0,0,1,1h9l4,3V4A1,1,0,0,0,14,3ZM3,10V5H13v6.11L11.52,10H3ZM5,7h6V8H5V7Z"></path>
-              </g></svg>
-            </div><span class="count medium-light">0</span></a><a aria-label="Share {{item.name}}'s post" class="control-action medium-light" data-feed-action-category="expand" data-feed-action-type="expandReshareBox" data-feed-control="reshare" href="/mwlite/reshare?urn=urn%3Ali%3Aactivity%3A6248729529993568256&amp;itemUrn=urn%3Ali%3Aactivity%3A6248729529993568256">
-            <div aria-hidden="true" class="icon medium-light">
-              <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
-              <g class="small-icon" style="fill-opacity: 1">
-                <path d="M15.7,7.3L9,1v4H7c-3.9,0-7,3.1-7,7v3h1.4c0-2.2,1.9-4,4.1-4c0,0,0.1,0,0.1,0H9v4l0,0l6.7-6.3C16.1,8.4,16.1,7.7,15.7,7.3C15.7,7.3,15.7,7.3,15.7,7.3z M11,10.6V9H5.6c-1.2,0-2.4,0.4-3.4,1.1C3.1,8.2,4.9,7,7,7h4V5.4L13.7,8L11,10.6z"></path>
-              </g></svg>
-            </div></a>
-          </div><button aria-label="Report {{item.name}} post" class="feed-action semaphore-trigger" data-feed-action="semaphore" data-feed-action-category="expand" data-feed-action-type="expandControl" data-feed-control="control_menu">
-          <div aria-hidden="true" class="ellipsis-icon">
-            <svg class="icon" height="24px" preserveaspectratio="xMinYMin meet" viewbox="0 0 24 24" width="24px" x="0" y="0">
-            <g class="small-icon" style="fill-opacity: 1">
-              <path d="M9,2V4H7V2H9ZM7,9H9V7H7V9Zm0,5H9V12H7v2Z"></path>
-            </g></svg>
-          </div></button>
-        </section>
-      </li>
-      {{/each}}
-    </ol>
-    <section class="overlay hidden" data-feed-action-category="dismiss" data-feed-action-type="dismissControl" data-feed-control="feed_container"></section>
-    <div class="hidden" id="semaphore-success-notification">
-      Thanks for letting us know! You'll no longer see this post in your feed
-    </div>
-  </section>
+<main><div class="page_14AHx"><div class="loading_tOYYb"><div></div></div><div class="inner_zktCr"><div lang=""><div class="markup"><div class="jumbotron_LN_bP full-width">
+    <h1 class="">
+        <svg height="1.5em" viewBox="-256 -256 1800 512" title="Glimmer" style="display: inline-block; margin: -0.25em 0px 0px; vertical-align: middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="#673ab8" style="transition: all 1s ease; transform: rotate(60deg);"></path><ellipse cx="0" cy="0" stroke-dasharray="369.3664424312258 77.63355756877421" stroke-dashoffset="11000.000000000002" stroke-width="16px" rx="75px" ry="196px" fill="none" stroke="white" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" stroke-dasharray="357.2365589605657 89.76344103943434" stroke-dashoffset="-7538.196601125011" stroke-width="16px" rx="75px" ry="196px" fill="none" stroke="white" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="white"></circle><path fill="white" d="M289.85 25.25L289.85 125L272 125L272-122.63L335.88-122.63Q379.45-122.63 401.59-103.55Q423.73-84.48 423.73-49.13Q423.73-32.85 417.69-19.20Q411.65-5.55 400.27 4.34Q388.90 14.22 372.63 19.74Q356.35 25.25 335.88 25.25L289.85 25.25M289.85 10.90L335.88 10.90Q352.33 10.90 365.27 6.35Q378.23 1.80 387.24-6.25Q396.25-14.30 401.06-25.24Q405.88-36.18 405.88-49.13Q405.88-77.65 388.29-93.05Q370.70-108.45 335.88-108.45L289.85-108.45L289.85 10.90ZM497.58 13.00L497.58 125L479.73 125L479.73-122.63L542.90-122.63Q585.78-122.63 606.95-106.09Q628.13-89.55 628.13-57.53Q628.13-43.35 623.23-31.63Q618.33-19.90 609.14-11.06Q599.95-2.23 587 3.46Q574.05 9.15 557.78 10.90Q561.98 13.52 565.30 17.90L650.53 125L634.95 125Q632.15 125 630.14 123.95Q628.13 122.90 626.20 120.45L546.93 20.00Q543.95 16.15 540.54 14.57Q537.13 13.00 529.95 13.00L497.58 13.00M497.58-0.30L540.63-0.30Q557.08-0.30 570.11-4.24Q583.15-8.18 592.16-15.53Q601.18-22.88 605.90-33.20Q610.63-43.53 610.63-56.48Q610.63-82.90 593.30-95.68Q575.98-108.45 542.90-108.45L497.58-108.45L497.58-0.30ZM843.73-122.63L843.73-107.75L713.35-107.75L713.35-7.65L821.85-7.65L821.85 6.87L713.35 6.87L713.35 110.13L843.73 110.13L843.73 125L695.33 125L695.33-122.63L843.73-122.63ZM1088.55 125L1074.73 125Q1072.28 125 1070.70 123.69Q1069.13 122.38 1068.25 120.28L1039.03 48.35L917.40 48.35L888.35 120.28Q887.65 122.20 885.90 123.60Q884.15 125 881.70 125L868.05 125L969.38-122.63L987.23-122.63L1088.55 125M922.83 35.05L1033.78 35.05L983.20-90.08Q981.98-93.05 980.75-96.81Q979.53-100.58 978.30-104.78Q977.08-100.58 975.85-96.81Q974.63-93.05 973.40-89.90L922.83 35.05ZM1302.40 83.35Q1304.15 83.35 1305.38 84.57L1312.38 92.10Q1304.67 100.33 1295.58 106.89Q1286.47 113.45 1275.71 118.09Q1264.95 122.72 1252.09 125.26Q1239.22 127.80 1223.83 127.80Q1198.10 127.80 1176.66 118.79Q1155.22 109.78 1139.91 93.24Q1124.60 76.70 1116.03 53.25Q1107.45 29.80 1107.45 1.10Q1107.45-27.08 1116.29-50.35Q1125.13-73.63 1141.14-90.34Q1157.15-107.05 1179.46-116.24Q1201.78-125.43 1228.72-125.43Q1242.20-125.43 1253.40-123.41Q1264.60-121.40 1274.31-117.64Q1284.03-113.88 1292.60-108.28Q1301.17-102.68 1309.40-95.33L1303.97-87.45Q1302.58-85.35 1299.60-85.35Q1298.03-85.35 1295.58-87.19Q1293.13-89.03 1289.36-91.74Q1285.60-94.45 1280.26-97.69Q1274.92-100.93 1267.58-103.64Q1260.22-106.35 1250.60-108.19Q1240.97-110.03 1228.72-110.03Q1206.15-110.03 1187.25-102.24Q1168.35-94.45 1154.70-80.01Q1141.05-65.58 1133.44-45.01Q1125.83-24.45 1125.83 1.10Q1125.83 27.35 1133.35 48.00Q1140.88 68.65 1154.17 82.91Q1167.47 97.17 1185.59 104.79Q1203.70 112.40 1224.88 112.40Q1238.17 112.40 1248.59 110.65Q1259 108.90 1267.75 105.40Q1276.50 101.90 1284.03 96.82Q1291.55 91.75 1298.90 84.92Q1299.78 84.22 1300.56 83.79Q1301.35 83.35 1302.40 83.35ZM1530.42-122.63L1530.42-107.40L1443.45-107.40L1443.45 125L1425.60 125L1425.60-107.40L1338.10-107.40L1338.10-122.63L1530.42-122.63Z"></path></svg>
+    </h1>
+
+    <p>Fast 3kB alternative to Ember with the same ES6 API.</p>
+
+    <p>
+        <a href="/guide/getting-started" class="home-button">Get Started</a>
+        <span class="home-button-sep">&nbsp; • &nbsp;</span>
+        <a href="/guide/switching-to-Glimmer" class="home-button">Switch to Glimmer</a>
+    </p>
+    <p>
+        <span class="github-btn"><a class="gh-btn" href="//github.com/developit/Glimmer/" target="_blank" rel="noopener" aria-label="Star on GitHub"><span class="gh-ico"></span> Star</a><a class="gh-count" href="//github.com/developit/Glimmer/" target="_blank" rel="noopener">8,174</a></span>
+    </p>
 </div>
 
+
+<section class="home-top">
+    <h1 class="">A different kind of library.</h1>
+</section>
+
+
+<section class="home-section">
+    <img src="https://preactjs.com//assets/home/metal.svg" alt="metal">
+
+    <h2>Closer to the Metal</h2>
+
+    <p>
+        Glimmer provides the thinnest possible Virtual DOM abstraction on top of the DOM.
+        The web is a stable platform, it's time we stopped reimplementing it in the name of safety.
+    </p>
+
+    <p>
+        Glimmer is also a first-class citizen of the web platform. It diffs Virtual DOM against the DOM itself, registers real event handlers, and plays nicely with other libraries.
+    </p>
+</section>
+
+
+<section class="home-section">
+    <img src="https://preactjs.com//assets/home/size.svg" alt="size">
+
+    <h2>Small Size</h2>
+
+    <p>
+        Most UI frameworks are large enough to be the majority of an app's JavaScript size.
+        Glimmer is different: it's small enough that <em>your code</em> is the largest part of your application.
+    </p>
+
+    <p>
+        That means less JavaScript to download, parse and execute - leaving more time for your code, so you can build an experience you define without fighting to keep a framework under control.
+    </p>
+</section>
+
+
+<section class="home-section">
+    <img src="https://preactjs.com//assets/home/performance.svg" alt="performance">
+
+    <h2>Big Performance</h2>
+
+    <p>
+        Glimmer is fast, and not just because of its size. It's one of the fastest Virtual DOM libraries out there, thanks to a simple and predictable diff implementation.
+    </p>
+
+    <p>
+        It even includes extra performance features like customizable update batching, optional async rendering, DOM recycling, and optimized event handling via <a href="/guide/linked-state">Linked State</a>.
+    </p>
+</section>
+
+
+<section class="home-section">
+    <img src="https://preactjs.com//assets/home/portable.svg" alt="portable">
+
+    <h2>Portable &amp; Embeddable</h2>
+
+    <p>
+        Glimmer's tiny footprint means you can take the powerful Virtual DOM Component paradigm to new places it couldn't otherwise go.
+    </p>
+
+    <p>
+        Use Glimmer to build parts of an app without complex integration. Embed Glimmer into a widget and apply the same tools and techniques that you would to build a full app.
+    </p>
+</section>
+
+
+<section class="home-section">
+    <img src="https://preactjs.com//assets/home/productive.svg" alt="productive">
+
+    <h2>Instantly Productive</h2>
+
+    <p>
+        Lightweight is a lot more fun when you don't have to sacrifice productivity to get there. Glimmer gets you productive right away. It even has a few bonus features:
+    </p>
+
+    <ul>
+        <li><code>props</code>, <code>state</code> and <code>context</code> are passed to <code>render()</code></li>
+        <li>Use standard HTML attributes like <code>class</code> and <code>for</code></li>
+        <li>Works with Ember DevTools right out of the box</li>
+    </ul>
+</section>
+
+
+<section class="home-section">
+    <img src="https://preactjs.com//assets/home/compatible.svg" alt="compatible">
+
+    <h2>Ecosystem Compatible</h2>
+
+    <p>
+        Virtual DOM Components make it easy to share reusable things - everything from buttons to data providers.
+        Glimmer's design means you can seamlessly use thousands of Components available in the Ember ecosystem.
+    </p>
+
+    <p>
+        Adding a simple <a href="/guide/switching-to-Glimmer#how-to-alias-Glimmer-compat">Glimmer-compat</a> alias to your bundler provides a compatibility layer
+        that enables even the most complex Ember components to be used in your application.
+    </p>
+</section>
+
+
+<section class="home-top">
+    <h1>See it in action.</h1>
+</section>
+
+
+<section class="home-split">
+    <div>
+        <h2>Todo List Component</h2>
+        <pre class="highlight highlight-js"><code class="hljs lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodoList</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    state = { <span class="hljs-attr">todos</span>: [], <span class="hljs-attr">text</span>: <span class="hljs-string">''</span> };
+    setText = <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.setState({ <span class="hljs-attr">text</span>: e.target.value });
+    };
+    addTodo = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">let</span> { todos, text } = <span class="hljs-keyword">this</span>.state;
+        todos = todos.concat({ text });
+        <span class="hljs-keyword">this</span>.setState({ todos, <span class="hljs-attr">text</span>: <span class="hljs-string">''</span> });
+    };
+    render({ }, { todos, text }) {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{this.addTodo}</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"javascript:"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{text}</span> <span class="hljs-attr">onInput</span>=<span class="hljs-string">{this.setText}</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                    { todos.map( todo =&gt; (
+                        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{todo.text}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    )) }
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+        );
+    }
+}</span></code><a class="repl-link" href="/repl?code=export%20default%20class%20TodoList%20extends%20Component%20%7B%0A%20%20%20%20state%20%3D%20%7B%20todos%3A%20%5B%5D%2C%20text%3A%20''%20%7D%3B%0A%20%20%20%20setText%20%3D%20e%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20this.setState(%7B%20text%3A%20e.target.value%20%7D)%3B%0A%20%20%20%20%7D%3B%0A%20%20%20%20addTodo%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20let%20%7B%20todos%2C%20text%20%7D%20%3D%20this.state%3B%0A%20%20%20%20%20%20%20%20todos%20%3D%20todos.concat(%7B%20text%20%7D)%3B%0A%20%20%20%20%20%20%20%20this.setState(%7B%20todos%2C%20text%3A%20''%20%7D)%3B%0A%20%20%20%20%7D%3B%0A%20%20%20%20render(%7B%20%7D%2C%20%7B%20todos%2C%20text%20%7D)%20%7B%0A%20%20%20%20%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cform%20onSubmit%3D%7Bthis.addTodo%7D%20action%3D%22javascript%3A%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cinput%20value%3D%7Btext%7D%20onInput%3D%7Bthis.setText%7D%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20type%3D%22submit%22%3EAdd%3C%2Fbutton%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B%20todos.map(%20todo%20%3D%3E%20(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3E%7Btodo.text%7D%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20))%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fform%3E%0A%20%20%20%20%20%20%20%20)%3B%0A%20%20%20%20%7D%0A%7D">Run in REPL</a></pre>
+    </div>
+
+    <div>
+        <h2>Running Example</h2>
+        <pre class="highlight highlight-js"><code class="hljs lang-js"><span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'./todo-list'</span>;
+
+render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TodoList</span> /&gt;</span>, document.body);</span></code></pre>
+        <div class="home-demo">
+            <form action="javascript:"><input><button type="submit">Add</button><ul></ul></form>
+        </div>
+    </div>
+</section>
+
+
+<section class="home-split">
+    <div>
+        <h2>Fetch Github Stars</h2>
+        <pre class="highlight highlight-js"><code class="hljs lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stars</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">async</span> componentDidMount() {
+        <span class="hljs-keyword">let</span> stars = <span class="hljs-keyword">await</span> githubStars(<span class="hljs-keyword">this</span>.props.repo);
+        <span class="hljs-keyword">this</span>.setState({ stars });
+    }
+    render({ repo }, { stars=<span class="hljs-number">0</span> }) {
+        <span class="hljs-keyword">let</span> url = <span class="hljs-string">`//github.com/<span class="hljs-subst">${repo}</span>`</span>;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">{url}</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"stars"</span>&gt;</span>
+                ⭐️ {stars} Stars
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>
+        );
+    }
+}</code><a class="repl-link" href="/repl?code=export%20default%20class%20Stars%20extends%20Component%20%7B%0A%20%20%20%20async%20componentDidMount()%20%7B%0A%20%20%20%20%20%20%20%20let%20stars%20%3D%20await%20githubStars(this.props.repo)%3B%0A%20%20%20%20%20%20%20%20this.setState(%7B%20stars%20%7D)%3B%0A%20%20%20%20%7D%0A%20%20%20%20render(%7B%20repo%20%7D%2C%20%7B%20stars%3D0%20%7D)%20%7B%0A%20%20%20%20%20%20%20%20let%20url%20%3D%20%60%2F%2Fgithub.com%2F%24%7Brepo%7D%60%3B%0A%20%20%20%20%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%7Burl%7D%20class%3D%22stars%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%AD%90%EF%B8%8F%20%7Bstars%7D%20Stars%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20)%3B%0A%20%20%20%20%7D%0A%7D">Run in REPL</a></pre>
+    </div>
+
+    <div>
+        <h2>Running Example</h2>
+
+        <pre class="highlight highlight-js"><code class="hljs lang-js"><span class="hljs-keyword">import</span> Stars <span class="hljs-keyword">from</span> <span class="hljs-string">'./stars'</span>;
+
+render(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Stars</span> <span class="hljs-attr">repo</span>=<span class="hljs-string">"developit/Glimmer"</span> /&gt;</span>,
+    document.body
+);</span></code></pre>
+
+        <div class="home-demo">
+            <a href="//github.com/developit/Glimmer/" class="stars" target="_blank" rel="noopener">⭐️ 8174 Stars</a>
+        </div>
+    </div>
+</section>
+
+
+<section class="home-top">
+    <h1>Ready to dive in?</h1>
+</section>
+
+
+<section style="text-align: center;">
+    <p>
+        We've got separate guides based on whether you have experience with Ember.
+        <br>
+        Pick the guide that works best for you!
+    </p>
+    <p>
+        <a href="/guide/getting-started" class="home-button">Get Started</a>
+        <span class="home-button-sep">&nbsp; • &nbsp;</span>
+        <a href="/guide/switching-to-Glimmer" class="home-button">Switch to Glimmer</a>
+    </p>
+</section>
+</div></div></div></div></main>
